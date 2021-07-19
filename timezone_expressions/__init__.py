@@ -24,3 +24,9 @@ def classFactory(iface):
     from .timezone_expressions import TimezoneExpressions
 
     return TimezoneExpressions(iface)
+
+
+def serverClassFactory(server_iface):
+    from .timezone_expressions import TimezoneExpressions
+
+    TimezoneExpressions.registerExpressions()

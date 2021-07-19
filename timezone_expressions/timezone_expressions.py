@@ -30,10 +30,18 @@ class TimezoneExpressions:
         self.iface = iface
 
     def initGui(self):
+        TimezoneExpressions.registerExpressions()
+
+    def unload(self):
+        TimezoneExpressions.unregisterExpressions()
+
+    @staticmethod
+    def registerExpressions():
         QgsExpression.registerFunction(set_timezone)
         QgsExpression.registerFunction(to_timezone)
 
-    def unload(self):
+    @staticmethod
+    def unregisterExpressions():
         QgsExpression.unregisterFunction("set_timezone")
         QgsExpression.unregisterFunction("to_timezone")
 
