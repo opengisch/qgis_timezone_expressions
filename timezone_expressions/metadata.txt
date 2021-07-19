@@ -1,0 +1,23 @@
+[general]
+name=timezone_expressions
+qgisMinimumVersion=3.0
+description=Expression functions to handle timezones in QGIS. set_timezone, to_timezone
+version=1.0
+author=Matthias Kuhn
+email=matthias@opengis.ch
+about=Expression functions to handel timezones in QGIS
+
+# end of mandatory metadata
+
+# tags are comma separated with spaces allowed
+tags=expressions,function,timezones,attributes,field calculator
+
+homepage=TODO
+tracker=TODO
+repository=TODO
+icon=icon.png # world clock by Krisada from the Noun Project
+# experimental flag
+experimental=False
+
+# deprecated flag (applies to the whole plugin, not just a single version
+deprecated=False
