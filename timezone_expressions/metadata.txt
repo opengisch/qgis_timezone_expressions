@@ -2,7 +2,7 @@
 name=timezone_expressions
 qgisMinimumVersion=3.0
 description=Expression functions to handle timezones in QGIS. set_timezone, to_timezone
-version=1.0
+version=DEV
 author=Matthias Kuhn
 email=matthias@opengis.ch
 about=Expression functions to handle timezones in QGIS
