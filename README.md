@@ -22,6 +22,11 @@ This works only if `time` already has a timezone set.
 Sets `timezone` of `time`.
 This does not do any conversion
 
+### `to_localtime(time)`
+
+Converts the provided `time` to the local timezone.
+This works only if `time` already has a timezone set.
+
 # dev
 
 Code style is enforced with pre-commit. To use :

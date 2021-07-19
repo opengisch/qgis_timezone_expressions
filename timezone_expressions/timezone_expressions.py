@@ -39,11 +39,13 @@ class TimezoneExpressions:
     def registerExpressions():
         QgsExpression.registerFunction(set_timezone)
         QgsExpression.registerFunction(to_timezone)
+        QgsExpression.registerFunction(to_localtime)
 
     @staticmethod
     def unregisterExpressions():
         QgsExpression.unregisterFunction("set_timezone")
         QgsExpression.unregisterFunction("to_timezone")
+        QgsExpression.unregisterFunction("to_localtime")
 
 
 @qgsfunction(args=2, group="Time", register=False, usesgeometry=False)
@@ -72,11 +74,11 @@ def set_timezone(values, feature, parent):
 @qgsfunction(args=2, group="Time", register=False, usesgeometry=False)
 def to_timezone(values, feature, parent):
     """
-    Sets the timezone of the provided date time value. This does not perform
-    any conversion of the value, it just overwrites the timezone part of it.
+    Converts the provided time to the provided timezone.
+    Note: Make sure that the timezone of time is set.
 
     <h4>Syntax</h4>
-    <p>set_timezone("datetime", 'Europe/Zurich')</p>
+    <p>to_timezone("datetime", 'Europe/Zurich')</p>
     <h4>Arguments</h4>
     <dl>
       <dn>datetime</dn><dd>A datetime value</dd>
@@ -89,3 +91,22 @@ def to_timezone(values, feature, parent):
     timezone_name = values[1]
 
     return time.toTimeZone(QTimeZone(timezone_name.encode("ascii")))
+
+
+@qgsfunction(args=1, group="Time", register=False, usesgeometry=False)
+def to_localtime(values, feature, parent):
+    """
+    Converts the provided time to the local timezone.
+    Note: Make sure that the timezone of time is set.
+
+    <h4>Syntax</h4>
+    <p>to_localtime("datetime")</p>
+    <h4>Arguments</h4>
+    <dl>
+      <dn>datetime</dn><dd>A datetime value</dd>
+    </dl>
+    """
+
+    time = values[0]
+
+    return time.toLocalTime()
