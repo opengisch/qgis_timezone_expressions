@@ -12,20 +12,25 @@ to_timezone(set_timezone("last_update", 'UTC'), 'Asia/Tbilisi')
 
 Wikipedia has [a list of timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
-### `to_timezone(time, 'America/Anguilla')`
+### `to_timezone(datetime, 'America/Anguilla')`
 
-Converts `time` to `timezone`.
-This works only if `time` already has a timezone set.
+Converts `datetime` to `timezone`.
+This works only if `datetime` already has a timezone set.
 
-### `set_timezone(time, 'UTC')`
+### `set_timezone(datetime, 'UTC')`
 
-Sets `timezone` of `time`.
+Sets `timezone` of `datetime`.
 This does not do any conversion
 
-### `to_localtime(time)`
+### `to_localtime(datetime)`
 
-Converts the provided `time` to the local timezone.
-This works only if `time` already has a timezone set.
+Converts the provided `datetime` to the local timezone.
+This works only if `datetime` already has a timezone set.
+
+### `to_utc(datetime)`
+
+Converts the provided `datetime` to utc.
+This works only if `datetime` already has a timezone set.
 
 # dev
 

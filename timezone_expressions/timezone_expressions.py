@@ -40,12 +40,14 @@ class TimezoneExpressions:
         QgsExpression.registerFunction(set_timezone)
         QgsExpression.registerFunction(to_timezone)
         QgsExpression.registerFunction(to_localtime)
+        QgsExpression.registerFunction(to_utc)
 
     @staticmethod
     def unregisterExpressions():
         QgsExpression.unregisterFunction("set_timezone")
         QgsExpression.unregisterFunction("to_timezone")
         QgsExpression.unregisterFunction("to_localtime")
+        QgsExpression.unregisterFunction("to_utc")
 
 
 @qgsfunction(args=2, group="Time", register=False, usesgeometry=False)
@@ -55,7 +57,7 @@ def set_timezone(values, feature, parent):
     any conversion of the value, it just overwrites the timezone part of it.
 
     <h4>Syntax</h4>
-    <p>set_timezone("datetime", 'Europe/Zurich')</p>
+    <p>set_timezone(datetime, timezone)</p>
     <h4>Arguments</h4>
     <dl>
       <dn>datetime</dn><dd>A datetime value</dd>
@@ -78,7 +80,7 @@ def to_timezone(values, feature, parent):
     Note: Make sure that the timezone of time is set.
 
     <h4>Syntax</h4>
-    <p>to_timezone("datetime", 'Europe/Zurich')</p>
+    <p>to_timezone(datetime, timezone)</p>
     <h4>Arguments</h4>
     <dl>
       <dn>datetime</dn><dd>A datetime value</dd>
@@ -100,7 +102,7 @@ def to_localtime(values, feature, parent):
     Note: Make sure that the timezone of time is set.
 
     <h4>Syntax</h4>
-    <p>to_localtime("datetime")</p>
+    <p>to_localtime(datetime)</p>
     <h4>Arguments</h4>
     <dl>
       <dn>datetime</dn><dd>A datetime value</dd>
@@ -110,3 +112,22 @@ def to_localtime(values, feature, parent):
     time = values[0]
 
     return time.toLocalTime()
+
+
+@qgsfunction(args=1, group="Time", register=False, usesgeometry=False)
+def to_utc(values, feature, parent):
+    """
+    Converts the provided time to utc.
+    Note: Make sure that the timezone of time is set.
+
+    <h4>Syntax</h4>
+    <p>to_utc(datetime)</p>
+    <h4>Arguments</h4>
+    <dl>
+      <dn>datetime</dn><dd>A datetime value</dd>
+    </dl>
+    """
+
+    time = values[0]
+
+    return time.toUtc()
