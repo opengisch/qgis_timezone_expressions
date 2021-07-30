@@ -35,6 +35,7 @@ This works only if `datetime` already has a timezone set.
 # dev
 
 Code style is enforced with pre-commit. To use :
-
+```
 pip install pre-commit
 pre-commit install
+```
